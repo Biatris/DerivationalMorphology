@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -x
+
+parse() {
+    for SUBSET in ../subsets/subset.*.txt; do
+        ./parse.py "${SUBSET}" "${SUBSET}.conllu"
+    done
+}
+
+valence() {
+    ./valence.py ../subsets/subset.*.conllu
+}
+
+main() {
+    parse
+    valence
+}
+
+main
